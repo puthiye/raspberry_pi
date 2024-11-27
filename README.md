@@ -10,3 +10,16 @@ Boot from USB
 6. The bootloader image now boots and writes your newly configured boot code to the EEPROM chip. (This will enable usb boot)
 7. When the ACT led keeps blinking, power down
 8. Now write the OS image to USB stick, and connect to Raspberry Pi
+
+
+PWM Fan / Ubuntu
+----------------
+
+sudo vi /boot/firmware/config.txt
+
+[pi4]
+dtoverlay=gpio-fan,gpiopin=18,temp=60000
+
+
+
+
