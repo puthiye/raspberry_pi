@@ -18,8 +18,9 @@ PWM Fan / Ubuntu
 sudo vi /boot/firmware/config.txt
 
 [pi4]
+```
 dtoverlay=gpio-fan,gpiopin=18,temp=60000
 
-
+```
 
 
