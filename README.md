@@ -22,5 +22,16 @@ sudo vi /boot/firmware/config.txt
 dtoverlay=gpio-fan,gpiopin=18,temp=60000
 
 ```
+eth0 Configuration
+---------------------
 
+![Screenshot 2025-04-20 091857](https://github.com/user-attachments/assets/86a4c3ed-87bd-4941-894b-5edd9f8563e2)
+
+Install dhcp client daemon to requset for eth0 ip address:
+```
+sudo apt-get install dhcpcd5
+sudo systemctl enable --now dhcpcd
+```
+
+Raspberry Pi no longer uses /etc/network/interfaces -> **auto wlan0** kind of configuration, instead uses wpa_supplicant for WiFi interfaces.
 
