@@ -1,7 +1,5 @@
-# raspberry_pi
 
-Boot from USB
-----------------
+## Boot from USB
 1. Raspberry Pi Imager - click the CHOOSE OS button. Next, go to category Misc utility images → Bootloader
 2. Select USB Boot – Boot from USB if available, otherwise boot from SD Card.
 3. Write the bootloader image to the SD card
@@ -12,9 +10,7 @@ Boot from USB
 8. Now write the OS image to USB stick, and connect to Raspberry Pi
 
 
-PWM Fan / Ubuntu
-----------------
-
+## PWM Fan / Ubuntu
 sudo vi /boot/firmware/config.txt
 
 [pi4]
@@ -22,8 +18,7 @@ sudo vi /boot/firmware/config.txt
 dtoverlay=gpio-fan,gpiopin=18,temp=60000
 
 ```
-eth0 Configuration
----------------------
+## eth0 Configuration
 
 ![Screenshot 2025-04-20 091857](https://github.com/user-attachments/assets/86a4c3ed-87bd-4941-894b-5edd9f8563e2)
 
@@ -34,4 +29,17 @@ sudo systemctl enable --now dhcpcd
 ```
 
 Raspberry Pi no longer uses /etc/network/interfaces -> **auto wlan0** kind of configuration, instead uses wpa_supplicant for WiFi interfaces.
+
+## Disable WIFI chip and wpa_supplicant daemon
+```
+Edit config.txt and add dtoverlay=disable-wifi
+[pi4]
+max_framebuffers=2
+arm_boost=1
+dtoverlay=gpio-fan,gpiopin=18,temp=70000
+dtoverlay=disable-wifi
+
+sudo systemctl disable --now wpa_supplicant@wlan0
+sudo systemctl disable --now wpa_supplicant
+```
 
